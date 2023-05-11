@@ -61,25 +61,26 @@
 	width: 30%;
 }
 
-.link {
+.login {
 	border: none;
+	background-color: transparent;
 	display: flex;
 	font-size: 1.4rem;
 	padding: 1rem;
 	transition: border 0.3s;
 }
 
-.link:hover {
+.login:hover {
 	border: 1px solid var(--color-white);
 }
 
-.linkImg {
+.loginImg {
 	height: 3.5rem;
 	margin-right: 1.5rem;
 	width: 3.5rem;
 }
 
-.linkTitle {
+.loginTitle {
 	color: var(--color-white);
 }
 

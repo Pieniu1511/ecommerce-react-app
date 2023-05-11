@@ -1,13 +1,21 @@
 import { useState } from 'react'
-import { NavLink, Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
 import classes from './HeaderBottom.module.css'
 import { HiMenu } from 'react-icons/hi'
 import MenuMobile from './MenuMobile'
 import Cart from './Cart'
-import Logo from '../../layouts/Logo'
+import Logo from '../../layouts/Logo/Logo'
+import { loginActions } from '../../store/index'
 
 function HeaderBottom() {
 	const [menuIsShown, setMenuIsShown] = useState(false)
+
+	const dispatch = useDispatch()
+
+	const toggleLoginHandler = () => {
+		dispatch(loginActions.toggle())
+	}
 
 	const cartToggleHandler = () => {
 		setMenuIsShown(!menuIsShown)
@@ -30,14 +38,14 @@ function HeaderBottom() {
 					</ul>
 				</nav>
 				<div className={classes.navRight}>
-					<Link className={classes.link} to='login'>
-						<img className={classes.linkImg} src='/images/user.svg' alt='user-icon' />
-						<p className={classes.linkTitle}>
+					<button className={classes.login} to='login' onClick={toggleLoginHandler}>
+						<img className={classes.loginImg} src='/images/user.svg' alt='user-icon' />
+						<p className={classes.loginTitle}>
 							Log in
 							<br />
 							My Account
 						</p>
-					</Link>
+					</button>
 					<Cart />
 				</div>
 				<div className={classes.navMobile}>

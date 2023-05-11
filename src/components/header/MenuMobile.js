@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { HiX } from 'react-icons/hi'
 import classes from './MenuMobile.module.css'
-import Logo from '../../layouts/Logo'
+import Logo from '../../layouts/Logo/Logo'
 
 function MenuMobile(props) {
 	return (

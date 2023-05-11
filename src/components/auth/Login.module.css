@@ -1,0 +1,55 @@
+.layout {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.title {
+	align-self: center;
+	font-size: 3rem;
+}
+
+.input {
+	border-radius: 0.5rem;
+	margin: 1rem 0;
+	padding: 1rem;
+	width: 90%;
+}
+
+.reminder {
+    color: var(--color-darkGrey);
+}
+
+.btn {
+	padding: 1rem 2rem;
+	margin: 1rem;
+	width: 12rem;
+	border-radius: 10rem;
+}
+
+.grey {
+	background-color: var(--color-grey);
+    transition: background-color .3s;
+}
+
+.grey:hover {
+    background-color: var(--color-darkGrey);
+}
+
+.grey a {
+    color: var(--color-white);
+}
+
+.yellow {
+    background-color: var(--color-yellow);
+    transition: background-color .3s;
+}
+
+.yellow:hover {
+    background-color: var(--color-orange);
+}
+
+.yellow a {
+	color: var(--color-grey);
+}
