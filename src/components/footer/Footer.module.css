@@ -1,0 +1,17 @@
+.footer {
+    align-items: center;
+    background-color: var(--color-darkGrey);
+    color: var(--color-white);
+    display: flex;
+    height: 10rem;
+    justify-content: center;
+    padding: 1rem;
+    width: 100vw;
+}
+
+.footerContainer {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}

@@ -1,8 +1,18 @@
 import React from 'react'
-// import classes from './Footer.module.css'
+import classes from './Footer.module.css'
 
 function Footer() {
-    return <div><h1>Footer</h1></div>;
+	const date = new Date()
+	const year = date.getFullYear()
+
+	return (
+		<div className={classes.footer}>
+			<div className={`${classes.footerContainer} container`}>
+				<p>&copy; {year} All Rights Reserved</p>
+				<p>Created by: Edmund Pieńkowski</p>
+			</div>
+		</div>
+	)
 }
 
 export default Footer
