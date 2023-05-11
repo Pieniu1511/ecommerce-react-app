@@ -3,24 +3,8 @@ import { NavLink, Link } from 'react-router-dom'
 import classes from './HeaderBottom.module.css'
 import { HiMenu } from 'react-icons/hi'
 import MenuMobile from './MenuMobile'
-
-export const logo = (
-	<Link className={classes.logo} to='/'>
-		<h1>
-			<span>D</span>igit.<span>Z</span>one
-		</h1>
-	</Link>
-)
-
-const cart = (
-	<Link className={classes.link}>
-		<img className={classes.linkImg} src='/images/cart.SVG' alt='cart-icon' />
-		<div className={classes.linkAdd}>
-			<div className={classes.badge}>2</div>
-			<p className={classes.price}>$ 500.00</p>
-		</div>
-	</Link>
-)
+import Cart from './Cart'
+import Logo from '../../layouts/Logo'
 
 function HeaderBottom() {
 	const [menuIsShown, setMenuIsShown] = useState(false)
@@ -32,14 +16,14 @@ function HeaderBottom() {
 	return (
 		<div className={classes.header}>
 			<div className={`${classes.headerContainer} container`}>
-				{logo}
+				<Logo />
 				<nav className={classes.navLeft}>
 					<ul>
 						<li className={classes.navLinks}>
-							<NavLink className={classes.navLink} to='/'>
+							<NavLink className={({isActive}) => (isActive ? `${classes.active}` : undefined)} to='/'>
 								HOME
 							</NavLink>
-							<NavLink className={classes.navLink} to='contact'>
+							<NavLink className={({isActive}) => (isActive ? `${classes.active}` : undefined)} to='contact'>
 								CONTACT
 							</NavLink>
 						</li>
@@ -54,10 +38,10 @@ function HeaderBottom() {
 							My Account
 						</p>
 					</Link>
-					{cart}
+					<Cart />
 				</div>
 				<div className={classes.navMobile}>
-					{cart}
+					<Cart />
 					<button className={classes.burgerBtn} onClick={cartToggleHandler}>
 						<HiMenu />
 					</button>

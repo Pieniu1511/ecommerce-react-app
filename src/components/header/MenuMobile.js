@@ -1,14 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { logo } from './HeaderBottom'
 import { HiX } from 'react-icons/hi'
 import classes from './MenuMobile.module.css'
+import Logo from '../../layouts/Logo'
 
 function MenuMobile(props) {
 	return (
 		<div className={classes.menuMobile}>
 			<div className={classes.menuTop}>
-				{logo}
+				<Logo />
 				<button className={classes.closeBtn} onClick={props.onCloseMenu}>
 					<HiX />
 				</button>
