@@ -1,0 +1,61 @@
+.menuMobile {
+	align-items: center;
+	background-color: var(--color-darkGrey);
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+	left: 0;
+	padding: 1.5rem;
+	position: absolute;
+	top: 0;
+	width: 100vw;
+	z-index: 5;
+}
+
+.menuTop {
+	align-items: center;
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+}
+
+.closeBtn {
+	background-color: transparent;
+	border: none;
+	color: var(--color-white);
+	font-size: 7rem;
+	padding: 1rem;
+}
+
+.menuTop .logo {
+	font-size: 2rem;
+}
+
+.mobileLinks {
+	height: 100%;
+}
+
+.mobileLinks ul {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	height: 100%;
+	list-style: none;
+}
+
+.mobileLink {
+	color: var(--color-white);
+	font-size: 3rem;
+}
+
+.mobileLinkCart {
+	align-items: center;
+	display: flex;
+	justify-content: center;
+	color: var(--color-yellow);
+}
+
+.mobileLinkCart img {
+	margin-left: 1rem;
+}

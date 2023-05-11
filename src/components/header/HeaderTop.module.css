@@ -1,0 +1,29 @@
+.header {
+    align-items: center;
+    background-color: var(--color-darkGrey);
+    border-bottom: 1px solid var(--color-grey);
+    color: var(--color-white);
+    display: flex;
+    justify-content: center;
+    padding: 1rem 0;
+    width: 100%;
+}
+
+.headerContainer {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.headerContainer a {
+    color: var(--color-white);
+}
+
+@media (max-width: 800px) {
+    .header {
+        font-size: 1rem;
+        padding: 1rem;
+    }
+}
+
