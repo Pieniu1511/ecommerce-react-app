@@ -16,20 +16,20 @@ function MenuMobile(props) {
 			<nav className={classes.mobileLinks}>
 				<ul>
 					<li>
-						<Link to='/' className={classes.mobileLink}>
+						<Link to='/' className={classes.mobileLink} onClick={props.onCloseMenu}>
 							Home
 						</Link>
 					</li>
 					<li>
-						<Link to='contact' className={classes.mobileLink}>
+						<Link to='contact' className={classes.mobileLink} onClick={props.onCloseMenu}>
 							Contact Us
 						</Link>
 					</li>
 					<li>
-						<Link className={classes.mobileLink}>Login</Link>
+						<Link className={classes.mobileLink} onClick={props.onCloseMenu}>Login</Link>
 					</li>
 					<li>
-						<Link className={`${classes.mobileLink} ${classes.mobileLinkCart}`}>
+						<Link className={`${classes.mobileLink} ${classes.mobileLinkCart}`} onClick={props.onCloseMenu}>
 							Cart <img src='/images/cart.svg' alt='cart-icon' className={classes.mobileCart} />
 						</Link>
 					</li>
