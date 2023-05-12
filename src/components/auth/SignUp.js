@@ -2,7 +2,7 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import classes from './auth.module.css'
-import CardLayout from '../../layouts/CardLayout/CardLayout'
+import CardLayout from '../../layouts/cardLayout/CardLayout'
 import { popupActions } from '../../store'
 
 function SignUp() {
