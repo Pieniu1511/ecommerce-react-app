@@ -10,6 +10,14 @@
 	font-size: 3rem;
 }
 
+.form {
+	align-items: center;	
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 100%;
+}
+
 .input {
 	border-radius: 0.5rem;
 	margin: 1rem 0;
