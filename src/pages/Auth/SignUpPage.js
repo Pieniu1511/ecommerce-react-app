@@ -1,19 +1,10 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
-import classes from './auth.module.css'
-import CardLayout from '../../layouts/CardLayout/CardLayout'
-import { popupActions } from '../../store'
+import classes from './Auth.module.css'
 
-function SignUp() {
-	const dispatch = useDispatch()
-
-	const closeSignUpHandler = () => {
-		dispatch(popupActions.closeSignUp())
-	}
-
+function SignUpPage() {
 	return (
-		<CardLayout className={classes.layout}>
+		<section className={classes.signup}>
 			<p className={classes.title}>Create New Account</p>
 			<form className={classes.form}>
 				<input type='text' name='name' className={classes.input} placeholder='Name' />
@@ -23,12 +14,12 @@ function SignUp() {
 				<button className={`${classes.yellow} ${classes.btn}`} type='submit'>
 					<Link>Create</Link>
 				</button>
-				<button className={classes.transparent} onClick={closeSignUpHandler} type='button'>
-					Cancel
+				<button className={classes.transparent} type='button'>
+					<Link to='/'>Cancel</Link>
 				</button>
 			</form>
-		</CardLayout>
+		</section>
 	)
 }
 
-export default SignUp
+export default SignUpPage

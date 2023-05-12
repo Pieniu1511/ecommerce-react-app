@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import CardLayout from '../../layouts/cardLayout/CardLayout'
+import CardLayout from '../../layouts/CardLayout/CardLayout'
 import { FaGoogle } from 'react-icons/fa'
 import { useDispatch } from 'react-redux'
 
@@ -33,9 +33,12 @@ function Login() {
 					<button className={`${classes.grey} ${classes.btn}`} type='submit'>
 						<Link>Login</Link>
 					</button>
+					<Link>
+					
 					<button className={`${classes.yellow} ${classes.btn}`} onClick={showSignUpHandler} type='button'>
-						Sign Up
+						<Link to='/signup'>Sign Up</Link>
 					</button>
+					</Link>
 				</div>
 				<p className={classes.or}>-- or --</p>
 				<button className={`${classes.authGoogle} ${classes.btn}`} type='button'>
