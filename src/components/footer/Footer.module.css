@@ -4,8 +4,9 @@
     color: var(--color-white);
     display: flex;
     height: 10rem;
+    height: auto;
     justify-content: center;
-    padding: 1rem;
+    padding: 4rem 1rem;
     width: 100vw;
 }
 
