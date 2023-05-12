@@ -1,21 +1,36 @@
 import { configureStore, createSlice } from '@reduxjs/toolkit'
 
-const loginState = { showLogin: false }
+const popupState = { showLogin: false, showReset: false, showSignUp: false }
 
-const loginSlice = createSlice({
+const popupSlice = createSlice({
 	name: 'login',
-	initialState: loginState,
+	initialState: popupState,
 	reducers: {
-		toggle(state) {
-			state.showLogin = !state.showLogin
+		openLogin(state) {
+			state.showLogin = true
 		},
+		closeLogin(state) {
+			state.showLogin = false
+		},
+		openReset(state) {
+			state.showReset = true
+		},
+		closeReset(state) {
+			state.showReset = false
+		},
+		openSignUp(state) {
+			state.showSignUp = true
+		},
+		closeSignUp(state) {
+			state.showSignUp = false
+		}
 	},
 })
 
 const store = configureStore({
-	reducer: { login: loginSlice.reducer },
+	reducer: { popup: popupSlice.reducer },
 })
 
-export const loginActions = loginSlice.actions
+export const popupActions = popupSlice.actions
 
 export default store

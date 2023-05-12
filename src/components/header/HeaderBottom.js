@@ -6,7 +6,7 @@ import { HiMenu } from 'react-icons/hi'
 import MenuMobile from './MenuMobile'
 import Cart from './Cart'
 import Logo from '../../layouts/Logo/Logo'
-import { loginActions } from '../../store/index'
+import { popupActions } from '../../store/index'
 
 function HeaderBottom() {
 	const [menuIsShown, setMenuIsShown] = useState(false)
@@ -14,7 +14,7 @@ function HeaderBottom() {
 	const dispatch = useDispatch()
 
 	const toggleLoginHandler = () => {
-		dispatch(loginActions.toggle())
+		dispatch(popupActions.openLogin())
 	}
 
 	const cartToggleHandler = () => {

@@ -1,0 +1,98 @@
+.layout {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.title {
+	align-self: center;
+	font-size: 3rem;
+}
+
+.input {
+	border-radius: 0.5rem;
+	margin: 1rem 0;
+	padding: 1rem;
+	width: 90%;
+}
+
+.reminder {
+	background-color: transparent;
+	border: none;
+	color: var(--color-darkGrey);
+	cursor: pointer;
+	font-size: 1.6rem;
+	padding: 1rem;
+}
+
+.btn {
+	border-radius: 10rem;
+	cursor: pointer;
+	margin: 1rem;
+	padding: 1rem 2rem;
+	width: 12rem;
+}
+
+.grey {
+	background-color: var(--color-grey);
+	transition: background-color 0.3s;
+}
+
+.grey:hover {
+	background-color: var(--color-darkGrey);
+	color: var(--color-white);
+}
+
+.grey a {
+	color: var(--color-white);
+}
+
+.yellow {
+	background-color: var(--color-yellow);
+	color: var(--color-grey);
+	transition: background-color 0.3s;
+}
+
+.yellow:hover {
+	background-color: var(--color-orange);
+}
+
+.yellow a {
+	color: var(--color-grey);
+}
+
+.or {
+	font-size: 1.4rem;
+}
+
+.authGoogle {
+	color: var(--color-white);
+	background-color: var(--color-lightGrey);
+	width: 90%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: background-color .3s;
+}
+
+.authGoogle:hover {
+	background-color: var(--color-darkGrey);
+}
+
+.google {
+	font-size: 1.6rem;
+	margin-right: 1rem;
+}
+
+.transparent {
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+	font-size: 1.6rem;
+	margin-top: 1rem;
+}
+
+
+
+

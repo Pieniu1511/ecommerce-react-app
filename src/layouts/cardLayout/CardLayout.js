@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { loginActions } from '../../store'
+import { popupActions } from '../../store'
 
 import classes from './CardLayout.module.css'
 
@@ -8,7 +8,9 @@ function CardLayout({ children, className }) {
 	const dispatch = useDispatch()
 
 	const closeCard = () => {
-		dispatch(loginActions.toggle())
+		dispatch(popupActions.closeLogin())
+		dispatch(popupActions.closeReset())
+		dispatch(popupActions.closeSignUp())
 	}
 
 	const stopPropagation = event => {
