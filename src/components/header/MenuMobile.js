@@ -26,7 +26,7 @@ function MenuMobile(props) {
 						</Link>
 					</li>
 					<li>
-						<Link to='/login' className={classes.mobileLink} onClick={props.onCloseMenu}>Login</Link>
+						<Link to='login' className={classes.mobileLink} onClick={props.onCloseMenu}>Login</Link>
 					</li>
 					<li>
 						<Link className={`${classes.mobileLink} ${classes.mobileLinkCart}`} onClick={props.onCloseMenu}>
