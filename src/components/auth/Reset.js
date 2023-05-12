@@ -15,6 +15,7 @@ function Reset() {
   return (
     <CardLayout className={classes.layout}>
         <p className={classes.title}>Reset Your Password</p>
+        <p className={classes.info}>We will send you an email to reset your password</p>
         <input type='email' name='email' placeholder='Email' className={classes.input} />
         <button className={`${classes.grey} ${classes.btn}`}><Link>Submit</Link></button>
         <button className={classes.transparent} onClick={closeResetHandler}>Cancel</button>
