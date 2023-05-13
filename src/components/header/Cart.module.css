@@ -1,9 +1,12 @@
 .cart {
+	align-items: center;
 	border: none;
 	display: flex;
 	font-size: 1.4rem;
+	justify-content: center;
 	padding: 1rem;
 	transition: border 0.3s;
+	width: 15rem;
 }
 
 .cart:hover {

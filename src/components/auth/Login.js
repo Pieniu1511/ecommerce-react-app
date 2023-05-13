@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import CardLayout from '../../layouts/cardLayout/CardLayout'
 import { FaGoogle } from 'react-icons/fa'
-import { popupActions } from '../../store'
+import { loginActions, popupActions } from '../../store'
 import { signInWithEmailAndPassword } from 'firebase/auth'
 import { auth } from '../../firebase/config'
 import { toast } from 'react-toastify'
@@ -39,6 +39,7 @@ function Login() {
 				setIsLoading(false)
 				toast.success('Login Successful...')
 				dispatch(popupActions.closeLogin())
+				dispatch(loginActions.logIn())
 				navigate('/')
 			})
 			.catch(error => {

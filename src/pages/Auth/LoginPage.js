@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useDispatch } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 import { FaGoogle } from 'react-icons/fa'
 import { signInWithEmailAndPassword } from 'firebase/auth'
@@ -7,6 +8,7 @@ import { toast } from 'react-toastify'
 import { FadeLoader } from 'react-spinners'
 
 import classes from './Auth.module.css'
+import { loginActions } from '../../store'
 
 function LoginPage() {
 	const [email, setEmail] = useState('')
@@ -14,6 +16,7 @@ function LoginPage() {
 	const [isLoading, setIsLoading] = useState(false)
 
 	const navigate = useNavigate()
+	const dispatch = useDispatch()
 
 	const loginUser = e => {
 		e.preventDefault()
@@ -24,6 +27,7 @@ function LoginPage() {
 				console.log(user)
 				setIsLoading(false)
 				toast.success('Login Successful...')
+				dispatch(loginActions.logIn())
 				navigate('/')
 			})
 			.catch(error => {

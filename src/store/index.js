@@ -23,14 +23,28 @@ const popupSlice = createSlice({
 		},
 		closeSignUp(state) {
 			state.showSignUp = false
-		}
+		},
+	},
+})
+
+const loginSlice = createSlice({
+	name: 'login',
+	initialState: { isLoggedIn: true },
+	reducers: {
+		logIn(state) {
+			state.isLoggedIn = true
+		},
+		logOut(state) {
+			state.isLoggedIn = false
+		},
 	},
 })
 
 const store = configureStore({
-	reducer: { popup: popupSlice.reducer },
+	reducer: { popup: popupSlice.reducer, login: loginSlice.reducer },
 })
 
 export const popupActions = popupSlice.actions
+export const loginActions = loginSlice.actions
 
 export default store

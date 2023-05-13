@@ -57,17 +57,20 @@
 .navRight {
 	align-items: center;
 	display: flex;
-	justify-content: space-between;
-	width: 30%;
+	justify-content: flex-end;
+	width: 45rem;
 }
 
 .login {
+	align-items: center;
 	border: none;
 	background-color: transparent;
 	display: flex;
 	font-size: 1.4rem;
+	justify-content: center;
 	padding: 1rem;
 	transition: border 0.3s;
+	width: 15rem;
 }
 
 .login:hover {
@@ -75,6 +78,7 @@
 }
 
 .loginImg {
+	color: var(--color-white);
 	height: 3.5rem;
 	margin-right: 1.5rem;
 	width: 3.5rem;
