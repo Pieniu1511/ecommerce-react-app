@@ -72,7 +72,7 @@ function SignUpPage() {
 						onChange={e => setCPassword(e.target.value)}
 					/>
 					<button className={`${classes.yellow} ${classes.btn}`} type='submit'>
-						<Link>Create</Link>
+						Create
 					</button>
 					<button className={classes.transparent} type='button'>
 						<Link to='/'>Cancel</Link>
