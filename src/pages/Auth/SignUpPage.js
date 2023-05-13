@@ -43,7 +43,7 @@ function SignUpPage() {
 			<section className={classes.signup}>
 				<p className={classes.title}>Create New Account</p>
 				{isLoading && <FadeLoader color={'#febd69'} className={classes.loader} />}
-				<form className={classes.form} onSubmit={registerUser}>
+				{!isLoading && <form className={classes.form} onSubmit={registerUser}>
 					<input
 						type='email'
 						name='email'
@@ -77,7 +77,7 @@ function SignUpPage() {
 					<button className={classes.transparent} type='button'>
 						<Link to='/'>Cancel</Link>
 					</button>
-				</form>
+				</form>}
 			</section>
 		</>
 	)
