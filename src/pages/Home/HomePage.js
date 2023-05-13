@@ -20,12 +20,12 @@ function HomePage() {
 					</div>
 					<div className={classes.topRight}>
 						<div className={classes.banner}>
+							<img src='/images/catbanner-01.jpg' alt='laptop' className={classes.bannerImg} />
 							<div className={classes.bannerTxt}>
 								<p className={classes.bannerTop}>Best sale</p>
 								<p className={classes.bannerTittle}>Laptops Max</p>
 								<p className={classes.bannerBottom}>From $1699.00 or $64.62/mo.</p>
 							</div>
-							<img src='/images/catbanner-01.jpg' alt='laptop' className={classes.bannerImg} />
 						</div>
 						<div className={classes.banner}>
 							<div className={classes.bannerTxt}>

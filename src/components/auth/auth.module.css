@@ -44,12 +44,12 @@
 
 .grey {
 	background-color: var(--color-grey);
+	color: var(--color-white);
 	transition: background-color 0.3s;
 }
 
 .grey:hover {
 	background-color: var(--color-darkGrey);
-	color: var(--color-white);
 }
 
 .grey a {
