@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { HiMenu } from 'react-icons/hi'
@@ -8,19 +8,32 @@ import Logo from '../../layouts/Logo/Logo'
 import { loginActions, popupActions } from '../../store/index'
 import { RiLogoutBoxRLine } from 'react-icons/ri'
 import { MdHistory } from 'react-icons/md'
-import { signOut } from "firebase/auth";
+import { onAuthStateChanged, signOut } from 'firebase/auth'
 import { auth } from '../../firebase/config'
+import { toast } from 'react-toastify'
 
 import classes from './HeaderBottom.module.css'
-import { toast } from 'react-toastify'
 
 function HeaderBottom() {
 	const [menuIsShown, setMenuIsShown] = useState(false)
+	const [displayName, setDisplayName] = useState('')
 
 	const isLoggedIn = useSelector(state => state.login.isLoggedIn)
 
 	const dispatch = useDispatch()
 	const navigate = useNavigate()
+
+	useEffect(() => {
+		onAuthStateChanged(auth, user => {
+			if (user) {
+				const uid = user.uid
+				console.log(uid)
+				setDisplayName(user.displayName)
+			} else {
+				setDisplayName('')
+			}
+		})
+	}, [])
 
 	const toggleLoginHandler = () => {
 		dispatch(popupActions.openLogin())
@@ -31,13 +44,15 @@ function HeaderBottom() {
 	}
 
 	const logoutHandler = () => {
-		signOut(auth).then(() => {
-			toast.success("Logout successfully.")
-			dispatch(loginActions.logOut())
-			navigate('/')
-		  }).catch((error) => {
-			toast.error(error.message)
-		  });
+		signOut(auth)
+			.then(() => {
+				toast.success('Logout successfully.')
+				dispatch(loginActions.logOut())
+				navigate('/')
+			})
+			.catch(error => {
+				toast.error(error.message)
+			})
 	}
 
 	const openHistoryHandler = () => {
@@ -60,11 +75,16 @@ function HeaderBottom() {
 						</li>
 					</ul>
 				</nav>
+				{isLoggedIn && <p className={classes.userName}>Hi, {displayName}</p>}
 				<div className={classes.navRight}>
 					{isLoggedIn && (
-						<button className={classes.login} onClick={openHistoryHandler} >
+						<button className={classes.login} onClick={openHistoryHandler}>
 							<MdHistory className={classes.loginImg} />
-							<p className={classes.loginTitle}>Orders<br/>History</p>
+							<p className={classes.loginTitle}>
+								Orders
+								<br />
+								History
+							</p>
 						</button>
 					)}
 					<Cart />
