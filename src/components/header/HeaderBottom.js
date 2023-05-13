@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { HiMenu } from 'react-icons/hi'
 import MenuMobile from './MenuMobile'
@@ -8,9 +8,11 @@ import Logo from '../../layouts/Logo/Logo'
 import { loginActions, popupActions } from '../../store/index'
 import { RiLogoutBoxRLine } from 'react-icons/ri'
 import { MdHistory } from 'react-icons/md'
-
+import { signOut } from "firebase/auth";
+import { auth } from '../../firebase/config'
 
 import classes from './HeaderBottom.module.css'
+import { toast } from 'react-toastify'
 
 function HeaderBottom() {
 	const [menuIsShown, setMenuIsShown] = useState(false)
@@ -18,6 +20,7 @@ function HeaderBottom() {
 	const isLoggedIn = useSelector(state => state.login.isLoggedIn)
 
 	const dispatch = useDispatch()
+	const navigate = useNavigate()
 
 	const toggleLoginHandler = () => {
 		dispatch(popupActions.openLogin())
@@ -28,7 +31,13 @@ function HeaderBottom() {
 	}
 
 	const logoutHandler = () => {
-		dispatch(loginActions.logOut())
+		signOut(auth).then(() => {
+			toast.success("Logout successfully.")
+			dispatch(loginActions.logOut())
+			navigate('/')
+		  }).catch((error) => {
+			toast.error(error.message)
+		  });
 	}
 
 	return (
