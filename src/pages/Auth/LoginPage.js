@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 import { FaGoogle } from 'react-icons/fa'
-import { GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth'
+import { GoogleAuthProvider, getRedirectResult, signInWithEmailAndPassword, signInWithRedirect } from 'firebase/auth'
 import { auth } from '../../firebase/config'
 import { toast } from 'react-toastify'
 import { FadeLoader } from 'react-spinners'
@@ -38,7 +38,8 @@ function LoginPage() {
 
 	const provider = new GoogleAuthProvider()
 	const signInWithGoogle = () => {
-		signInWithPopup(auth, provider)
+		signInWithRedirect(auth, provider)
+		getRedirectResult(auth)
 			.then(result => {
 				const user = result.user
 				console.log(user)

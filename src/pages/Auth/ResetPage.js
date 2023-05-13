@@ -32,9 +32,17 @@ function ResetPage() {
 			{isLoading && <FadeLoader color={'#febd69'} className={classes.loader} />}
 			{!isLoading && (
 				<form className={classes.form} onSubmit={resetPasswordHandler}>
-					<input type='email' name='email' placeholder='Email' className={classes.input} />
+					<input
+						type='email'
+						name='email'
+						placeholder='Email'
+						className={classes.input}
+						required
+						value={email}
+						onChange={e => setEmail(e.target.value)}
+					/>
 					<button className={`${classes.grey} ${classes.btn}`} type='submit'>
-						<Link>Submit</Link>
+						Submit
 					</button>
 					<button className={classes.transparent} type='button'>
 						<Link to='/'>Cancel</Link>
