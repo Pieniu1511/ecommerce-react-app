@@ -19,7 +19,7 @@ function App() {
 				{ path: 'login', element: <LoginPage /> },
 				{ path: 'reset', element: <ResetPage /> },
 				{ path: 'signup', element: <SignUpPage /> },
-				{ path: 'history', element: <OrdersHistoryPage /> },
+				{ path: 'orders', element: <OrdersHistoryPage /> },
 			],
 		},
 	])

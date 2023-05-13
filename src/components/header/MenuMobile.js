@@ -65,7 +65,7 @@ function MenuMobile(props) {
 					)}
 					{isLoggedIn && (
 						<li>
-							<Link to='history' className={classes.mobileLink} onClick={props.onCloseMenu}>
+							<Link to='orders' className={classes.mobileLink} onClick={props.onCloseMenu}>
 								Orders History
 							</Link>
 						</li>

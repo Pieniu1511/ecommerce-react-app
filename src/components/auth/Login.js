@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import CardLayout from '../../layouts/cardLayout/CardLayout'
 import { FaGoogle } from 'react-icons/fa'
 import { loginActions, popupActions } from '../../store'
-import { signInWithEmailAndPassword } from 'firebase/auth'
+import { GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth'
 import { auth } from '../../firebase/config'
 import { toast } from 'react-toastify'
 import { FadeLoader } from 'react-spinners'
@@ -35,6 +35,26 @@ function Login() {
 		signInWithEmailAndPassword(auth, email, password)
 			.then(userCredential => {
 				const user = userCredential.user
+				console.log(user)
+				console.log('działą')
+				setIsLoading(false)
+				toast.success('Login Successful...')
+				dispatch(popupActions.closeLogin())
+				dispatch(loginActions.logIn())
+				navigate('/')
+			})
+			.catch(error => {
+				setIsLoading(false)
+				toast.error(error.message)
+			})
+	}
+
+	const provider = new GoogleAuthProvider()
+	const signInWithGoogle = () => {
+		setIsLoading(true)
+		signInWithPopup(auth, provider)
+			.then(result => {
+				const user = result.user
 				console.log(user)
 				setIsLoading(false)
 				toast.success('Login Successful...')
@@ -84,7 +104,7 @@ function Login() {
 						</button>
 					</div>
 					<p className={classes.or}>-- or --</p>
-					<button className={`${classes.authGoogle} ${classes.btn}`} type='button'>
+					<button className={`${classes.authGoogle} ${classes.btn}`} type='button' onClick={signInWithGoogle}>
 						<FaGoogle className={classes.google} /> Login with Google
 					</button>
 				</form>

@@ -40,6 +40,10 @@ function HeaderBottom() {
 		  });
 	}
 
+	const openHistoryHandler = () => {
+		navigate('orders')
+	}
+
 	return (
 		<div className={classes.header}>
 			<div className={`${classes.headerContainer} container`}>
@@ -58,7 +62,7 @@ function HeaderBottom() {
 				</nav>
 				<div className={classes.navRight}>
 					{isLoggedIn && (
-						<button className={classes.login} onClick={logoutHandler}>
+						<button className={classes.login} onClick={openHistoryHandler} >
 							<MdHistory className={classes.loginImg} />
 							<p className={classes.loginTitle}>Orders<br/>History</p>
 						</button>

@@ -29,7 +29,7 @@ const popupSlice = createSlice({
 
 const loginSlice = createSlice({
 	name: 'login',
-	initialState: { isLoggedIn: true },
+	initialState: { isLoggedIn: false },
 	reducers: {
 		logIn(state) {
 			state.isLoggedIn = true
