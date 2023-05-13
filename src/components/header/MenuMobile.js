@@ -36,12 +36,27 @@ function MenuMobile(props) {
 							Contact Us
 						</Link>
 					</li>
-					{!isLoggedIn && <li>
-						<Link to='login' className={classes.mobileLink} onClick={props.onCloseMenu}>Login</Link>
-					</li>}
-					{isLoggedIn && <li>
-						<Link to='/' className={classes.mobileLink} onClick={logoutHandler}>Logout</Link>
-					</li>}
+					{!isLoggedIn && (
+						<li>
+							<Link to='login' className={classes.mobileLink} onClick={props.onCloseMenu}>
+								Login
+							</Link>
+						</li>
+					)}
+					{isLoggedIn && (
+						<li>
+							<Link to='/' className={classes.mobileLink} onClick={logoutHandler}>
+								Logout
+							</Link>
+						</li>
+					)}
+					{isLoggedIn && (
+						<li>
+							<Link to='history' className={classes.mobileLink} onClick={props.onCloseMenu}>
+								Orders History
+							</Link>
+						</li>
+					)}
 					<li>
 						<Link className={`${classes.mobileLink} ${classes.mobileLinkCart}`} onClick={props.onCloseMenu}>
 							Cart <img src='/images/cart.svg' alt='cart-icon' className={classes.mobileCart} />

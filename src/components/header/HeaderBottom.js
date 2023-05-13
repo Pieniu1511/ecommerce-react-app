@@ -51,7 +51,7 @@ function HeaderBottom() {
 					{isLoggedIn && (
 						<button className={classes.login} onClick={logoutHandler}>
 							<MdHistory className={classes.loginImg} />
-							<p className={classes.loginTitle}>Order<br/>History</p>
+							<p className={classes.loginTitle}>Orders<br/>History</p>
 						</button>
 					)}
 					<Cart />

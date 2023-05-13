@@ -6,6 +6,7 @@ import ContactPage from './pages/Contact/ContactPage'
 import LoginPage from './pages/Auth/LoginPage'
 import ResetPage from './pages/Auth/ResetPage'
 import SignUpPage from './pages/Auth/SignUpPage'
+import OrdersHistoryPage from './pages/OrdersHistory/OrdersHistoryPage'
 
 function App() {
 	const router = createBrowserRouter([
@@ -18,6 +19,7 @@ function App() {
 				{ path: 'login', element: <LoginPage /> },
 				{ path: 'reset', element: <ResetPage /> },
 				{ path: 'signup', element: <SignUpPage /> },
+				{ path: 'history', element: <OrdersHistoryPage /> },
 			],
 		},
 	])
