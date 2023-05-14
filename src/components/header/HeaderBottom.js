@@ -5,7 +5,8 @@ import { HiMenu } from 'react-icons/hi'
 import MenuMobile from './MenuMobile'
 import Cart from './Cart'
 import Logo from '../../layouts/Logo/Logo'
-import { loginActions, popupActions } from '../../store/index'
+import { loginActions } from '../../store/slice/loginSlice'
+import { popupActions } from '../../store/slice/popupSlice'
 import { RiLogoutBoxRLine } from 'react-icons/ri'
 import { MdHistory } from 'react-icons/md'
 import { onAuthStateChanged, signOut } from 'firebase/auth'
@@ -26,14 +27,27 @@ function HeaderBottom() {
 	useEffect(() => {
 		onAuthStateChanged(auth, user => {
 			if (user) {
-				const uid = user.uid
-				console.log(uid)
-				setDisplayName(user.displayName)
+				if (user.displayName == null) {
+					const u1 = user.email.substring(0, user.email.indexOf('@'))
+					const uName = u1.charAt(0).toUpperCase() + u1.slice(1)
+					setDisplayName(uName)
+				} else {
+					setDisplayName(user.displayName)
+				}
+
+				dispatch(
+					loginActions.setActiveUser({
+						email: user.email,
+						userName: user.displayName ? user.displayName : displayName,
+						userId: user.uid,
+					})
+				)
 			} else {
 				setDisplayName('')
+				dispatch(loginActions.removeActiveUser())
 			}
 		})
-	}, [])
+	}, [dispatch, displayName])
 
 	const toggleLoginHandler = () => {
 		dispatch(popupActions.openLogin())
@@ -47,7 +61,6 @@ function HeaderBottom() {
 		signOut(auth)
 			.then(() => {
 				toast.success('Logout successfully.')
-				dispatch(loginActions.logOut())
 				navigate('/')
 			})
 			.catch(error => {

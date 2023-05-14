@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import CardLayout from '../../layouts/cardLayout/CardLayout'
 import { FaGoogle } from 'react-icons/fa'
-import { loginActions, popupActions } from '../../store'
+import { popupActions } from '../../store/slice/popupSlice'
 import { GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth'
 import { auth } from '../../firebase/config'
 import { toast } from 'react-toastify'
@@ -34,13 +34,9 @@ function Login() {
 		setIsLoading(true)
 		signInWithEmailAndPassword(auth, email, password)
 			.then(userCredential => {
-				const user = userCredential.user
-				console.log(user)
-				console.log('działą')
 				setIsLoading(false)
 				toast.success('Login Successful...')
 				dispatch(popupActions.closeLogin())
-				dispatch(loginActions.logIn())
 				navigate('/')
 			})
 			.catch(error => {
@@ -54,12 +50,9 @@ function Login() {
 		setIsLoading(true)
 		signInWithPopup(auth, provider)
 			.then(result => {
-				const user = result.user
-				console.log(user)
 				setIsLoading(false)
 				toast.success('Login Successful...')
 				dispatch(popupActions.closeLogin())
-				dispatch(loginActions.logIn())
 				navigate('/')
 			})
 			.catch(error => {

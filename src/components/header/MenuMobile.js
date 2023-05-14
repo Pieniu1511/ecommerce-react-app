@@ -1,10 +1,10 @@
 import React from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 import { HiX } from 'react-icons/hi'
 import classes from './MenuMobile.module.css'
 import Logo from '../../layouts/Logo/Logo'
-import { loginActions } from '../../store'
+// import { loginActions } from '../../store/slice/loginSlice'
 import { signOut } from 'firebase/auth'
 import { auth } from '../../firebase/config'
 import { toast } from 'react-toastify'
@@ -12,7 +12,6 @@ import { toast } from 'react-toastify'
 function MenuMobile(props) {
 	const isLoggedIn = useSelector(state => state.login.isLoggedIn)
 
-	const dispatch = useDispatch()
 	const navigate = useNavigate()
 
 	const logoutHandler = () => {
@@ -20,7 +19,6 @@ function MenuMobile(props) {
 			.then(() => {
 				toast.success('Logout successfully.')
 				props.onCloseMenu()
-				dispatch(loginActions.logOut())
 				navigate('login')
 			})
 			.catch(error => {

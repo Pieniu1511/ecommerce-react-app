@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { useDispatch } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 import { FaGoogle } from 'react-icons/fa'
 import { GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth'
@@ -8,7 +7,6 @@ import { toast } from 'react-toastify'
 import { FadeLoader } from 'react-spinners'
 
 import classes from './Auth.module.css'
-import { loginActions } from '../../store'
 
 function LoginPage() {
 	const [email, setEmail] = useState('')
@@ -16,18 +14,14 @@ function LoginPage() {
 	const [isLoading, setIsLoading] = useState(false)
 
 	const navigate = useNavigate()
-	const dispatch = useDispatch()
 
 	const loginUser = e => {
 		e.preventDefault()
 		setIsLoading(true)
 		signInWithEmailAndPassword(auth, email, password)
 			.then(userCredential => {
-				const user = userCredential.user
-				console.log(user)
 				setIsLoading(false)
 				toast.success('Login Successful...')
-				dispatch(loginActions.logIn())
 				navigate('/')
 			})
 			.catch(error => {
@@ -43,7 +37,6 @@ function LoginPage() {
 				const user = result.user
 				console.log(user)
 				toast.success('Login Successful...')
-				dispatch(loginActions.logIn())
 				navigate('/')
 			})
 			.catch(error => {

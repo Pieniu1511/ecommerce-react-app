@@ -132,4 +132,8 @@
 		font-size: 4.9rem;
 		padding: 1rem;
 	}
+
+	.userName {
+		display: none;
+	}
 }

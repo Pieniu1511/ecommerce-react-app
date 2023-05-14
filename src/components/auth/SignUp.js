@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
 import CardLayout from '../../layouts/cardLayout/CardLayout'
-import { popupActions } from '../../store'
+import { popupActions } from '../../store/slice/popupSlice'
 import { toast } from 'react-toastify'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { auth } from '../../firebase/config'
@@ -33,8 +33,6 @@ function SignUp() {
 
 		createUserWithEmailAndPassword(auth, email, password)
 			.then(userCredential => {
-				const user = userCredential.user
-				console.log(user)
 				setIsLoading(false)
 				toast.success('Registration Successful...')
 				dispatch(popupActions.closeSignUp())

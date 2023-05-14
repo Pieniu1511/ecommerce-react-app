@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import CardLayout from '../../layouts/cardLayout/CardLayout'
-import { popupActions } from '../../store'
+import { popupActions } from '../../store/slice/popupSlice'
 import { sendPasswordResetEmail } from 'firebase/auth'
 import { auth } from '../../firebase/config'
 import { toast } from 'react-toastify'

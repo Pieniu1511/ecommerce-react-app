@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { popupActions } from '../../store'
+import { popupActions } from '../../store/slice/popupSlice'
 
 import classes from './CardLayout.module.css'
 
@@ -19,7 +19,9 @@ function CardLayout({ children, className }) {
 
 	return (
 		<div className={classes.backdrop} onClick={closeCard}>
-			<div className={`${classes.layout} ${className}`} onClick={stopPropagation}>{children}</div>
+			<div className={`${classes.layout} ${className}`} onClick={stopPropagation}>
+				{children}
+			</div>
 		</div>
 	)
 }
