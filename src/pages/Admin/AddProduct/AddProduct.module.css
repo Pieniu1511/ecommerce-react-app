@@ -1,0 +1,108 @@
+.products {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem 0;
+}
+
+.products h2 {
+    font-size: 4rem;
+    margin: 2rem;
+}
+
+.form {
+    align-items: start;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+}
+
+.form label {
+    font-size: 2rem;
+    margin: 1rem 0;
+}
+
+.form input {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    padding: 0.5rem 0;
+    width: 100%;
+}
+
+.form select {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    padding: 0.5rem 0;
+    width: 100%;
+}
+
+.form textarea {
+    max-width: 100%;
+    min-width: 100%;
+    width: 100%;
+}
+
+.form button {
+    background-color: var(--color-yellow);
+    color: var(--color-darkGrey);
+    margin: 2rem 0;
+    padding: 1rem 2rem;
+    transition: background-color .3s;
+}
+
+.form button:hover {
+    background-color: var(--color-orange);
+}
+
+.group {
+    border: 1px solid var(--color-grey);
+    padding: 1rem;
+    width: 100%;
+}
+
+.progress {
+    background-color: var(--color-lightGrey);
+    color: var(--color-white);
+    width: 100%;
+}
+
+.progressBar {
+    background-color: var(--color-yellow);
+    color: var(--color-darkGrey);
+    height: 100%;
+    padding: 0.5rem;
+}
+
+@media (max-width: 800px) {
+    .products h2 {
+        font-size: 3rem;
+    }
+
+    .form {
+        width: 90%;
+    }
+
+    .form label {
+        font-size: 1.8rem;
+        margin: 0.7rem 0;
+    }
+
+    .form input {
+        font-size: 1.8rem;
+    }
+
+    .progressBar {
+        font-size: 1.4rem;
+        padding: 0.3rem;
+    }
+
+    .form select {
+        font-size: 1.8rem;
+    }
+
+    .form option {
+        font-size: 1.4rem;
+    }
+}

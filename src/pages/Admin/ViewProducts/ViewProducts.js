@@ -1,20 +1,22 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { selectEmail } from '../../../store/slice/loginSlice'
+import Permission from '../Permission'
 
 function ViewProducts() {
 	const email = useSelector(selectEmail)
 
-	return <>
-	{email !== 'admin@gmail.com' ? <div className='permission'>
-		<h2>Permission Denied</h2>
-		<p>This page can only be view by an Admin user.</p>
-	</div> : (
+	return (
 		<>
-		<h2>Admin Page</h2>
+			{email !== 'admin@gmail.com' ? (
+				<Permission />
+			) : (
+				<>
+					<h2>View Products</h2>
+				</>
+			)}
 		</>
-	)}
-</>
+	)
 }
 
 export default ViewProducts
