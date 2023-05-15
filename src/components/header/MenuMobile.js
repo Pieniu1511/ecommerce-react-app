@@ -50,7 +50,7 @@ function MenuMobile(props) {
 					</li>
 					{email === 'admin@gmail.com' ? (
 						<li>
-							<Link to='login' className={classes.mobileLink} onClick={props.onCloseMenu}>
+							<Link to='admin 	' className={classes.mobileLink} onClick={props.onCloseMenu}>
 								Admin
 							</Link>
 						</li>

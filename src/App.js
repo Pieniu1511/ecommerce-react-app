@@ -7,7 +7,11 @@ import LoginPage from './pages/Auth/LoginPage'
 import ResetPage from './pages/Auth/ResetPage'
 import SignUpPage from './pages/Auth/SignUpPage'
 import OrdersHistoryPage from './pages/OrdersHistory/OrdersHistoryPage'
-import AdminPage from './pages/Admin/AdminPage'
+import AdminPage from './pages/Admin/AdminPage/AdminPage'
+import AdminLayout from './layouts/AdminLayout/AdminLayout'
+import AdminOrders from './pages/Admin/AdminOrders/AdminOrders'
+import AddProduct from './pages/Admin/AddProduct/AddProduct'
+import ViewProducts from './pages/Admin/ViewProducts/ViewProducts'
 
 function App() {
 	const router = createBrowserRouter([
@@ -21,7 +25,16 @@ function App() {
 				{ path: 'reset', element: <ResetPage /> },
 				{ path: 'signup', element: <SignUpPage /> },
 				{ path: 'orders', element: <OrdersHistoryPage /> },
-				{ path: 'admin', element: <AdminPage /> },
+				{
+					path: 'admin',
+					element: <AdminLayout />,
+					children: [
+						{ index: true, element: <AdminPage /> },
+						{ path: 'view-products', element: <ViewProducts /> },
+						{ path: 'add-product', element: <AddProduct /> },
+						{ path: 'orders', element: <AdminOrders /> },
+					],
+				},
 			],
 		},
 	])
