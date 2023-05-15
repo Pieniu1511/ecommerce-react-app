@@ -7,6 +7,7 @@ import LoginPage from './pages/Auth/LoginPage'
 import ResetPage from './pages/Auth/ResetPage'
 import SignUpPage from './pages/Auth/SignUpPage'
 import OrdersHistoryPage from './pages/OrdersHistory/OrdersHistoryPage'
+import AdminPage from './pages/Admin/AdminPage'
 
 function App() {
 	const router = createBrowserRouter([
@@ -20,6 +21,7 @@ function App() {
 				{ path: 'reset', element: <ResetPage /> },
 				{ path: 'signup', element: <SignUpPage /> },
 				{ path: 'orders', element: <OrdersHistoryPage /> },
+				{ path: 'admin', element: <AdminPage /> },
 			],
 		},
 	])

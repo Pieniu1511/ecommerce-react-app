@@ -5,7 +5,7 @@ import { HiMenu } from 'react-icons/hi'
 import MenuMobile from './MenuMobile'
 import Cart from './Cart'
 import Logo from '../../layouts/Logo/Logo'
-import { loginActions } from '../../store/slice/loginSlice'
+import { loginActions, selectEmail } from '../../store/slice/loginSlice'
 import { popupActions } from '../../store/slice/popupSlice'
 import { RiLogoutBoxRLine } from 'react-icons/ri'
 import { MdHistory } from 'react-icons/md'
@@ -20,6 +20,7 @@ function HeaderBottom() {
 	const [displayName, setDisplayName] = useState('')
 
 	const isLoggedIn = useSelector(state => state.login.isLoggedIn)
+	const email = useSelector(selectEmail)
 
 	const dispatch = useDispatch()
 	const navigate = useNavigate()
@@ -77,14 +78,23 @@ function HeaderBottom() {
 			<div className={`${classes.headerContainer} container`}>
 				<Logo />
 				<nav className={classes.navLeft}>
-					<ul>
-						<li className={classes.navLinks}>
+					<ul className={classes.navLinks}>
+						<li>
 							<NavLink className={({ isActive }) => (isActive ? `${classes.active}` : undefined)} to='/'>
 								HOME
 							</NavLink>
+						</li>
+						<li>
 							<NavLink className={({ isActive }) => (isActive ? `${classes.active}` : undefined)} to='contact'>
 								CONTACT
 							</NavLink>
+						</li>
+						<li>
+							{email === 'admin@gmail.com' ? (
+								<NavLink className={({ isActive }) => (isActive ? `${classes.active}` : undefined)} to='admin'>
+									ADMIN
+								</NavLink>
+							) : null}
 						</li>
 					</ul>
 				</nav>

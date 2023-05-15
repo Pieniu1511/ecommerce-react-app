@@ -16,7 +16,7 @@
 }
 
 .navLeft {
-	width: 15%;
+	width: 20%;
 	min-width: 15rem;
 }
 
@@ -24,6 +24,11 @@
 	align-items: center;
 	display: flex;
 	justify-content: space-between;
+}
+
+.navLinks li {
+	list-style: none;
+	margin: 1rem;
 }
 
 .navLinks a {
@@ -47,7 +52,7 @@
 	width: 100%;
 	height: 2px;
 	background-color: var(--color-yellow);
-	transition: background-color .3s;
+	transition: background-color 0.3s;
 }
 
 .navLinks .active:hover::after {
@@ -132,7 +137,9 @@
 		font-size: 4.9rem;
 		padding: 1rem;
 	}
+}
 
+@media (max-width: 970px) {
 	.userName {
 		display: none;
 	}

@@ -4,13 +4,14 @@ import { Link, useNavigate } from 'react-router-dom'
 import { HiX } from 'react-icons/hi'
 import classes from './MenuMobile.module.css'
 import Logo from '../../layouts/Logo/Logo'
-// import { loginActions } from '../../store/slice/loginSlice'
 import { signOut } from 'firebase/auth'
 import { auth } from '../../firebase/config'
 import { toast } from 'react-toastify'
+import { selectEmail } from '../../store/slice/loginSlice'
 
 function MenuMobile(props) {
 	const isLoggedIn = useSelector(state => state.login.isLoggedIn)
+	const email = useSelector(selectEmail)
 
 	const navigate = useNavigate()
 
@@ -47,6 +48,13 @@ function MenuMobile(props) {
 							Contact Us
 						</Link>
 					</li>
+					{email === 'admin@gmail.com' ? (
+						<li>
+							<Link to='login' className={classes.mobileLink} onClick={props.onCloseMenu}>
+								Admin
+							</Link>
+						</li>
+					) : null}
 					{!isLoggedIn && (
 						<li>
 							<Link to='login' className={classes.mobileLink} onClick={props.onCloseMenu}>
