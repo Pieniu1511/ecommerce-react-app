@@ -5,3 +5,9 @@
 .logo span {
 	color: var(--color-yellow);
 }
+
+@media (max-width: 800px) {
+	.logo {
+		width: 5rem;
+	}
+}
