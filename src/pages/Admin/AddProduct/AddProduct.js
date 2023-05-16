@@ -2,6 +2,11 @@ import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { selectEmail } from '../../../store/slice/loginSlice'
 import Permission from '../Permission'
+import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage'
+import { db, storage } from '../../../firebase/config'
+import { toast } from 'react-toastify'
+import { Timestamp, addDoc, collection } from 'firebase/firestore'
+import { useNavigate } from 'react-router-dom'
 
 import classes from './AddProduct.module.css'
 
@@ -12,15 +17,22 @@ const categories = [
 	{ id: 4, name: 'Phone' },
 ]
 
+const initialState = {
+	name: '',
+	imageUrl: '',
+	price: 0,
+	category: '',
+	brand: '',
+	desc: '',
+}
+
 function AddProducts() {
 	const [product, setProduct] = useState({
-		name: '',
-		imageUrl: '',
-		price: null,
-		category: '',
-		brand: '',
-		desc: '',
+		...initialState,
 	})
+	const [uploadProgress, setUploadProgress] = useState(0)
+
+	const navigate = useNavigate()
 
 	const email = useSelector(selectEmail)
 
@@ -28,10 +40,51 @@ function AddProducts() {
 		const { name, value } = e.target
 		setProduct({ ...product, [name]: value })
 	}
-	const imageChangeHandler = e => {}
 
-	const addProduct = (e) => {
+	const imageChangeHandler = e => {
+		const file = e.target.files[0]
+
+		const storageRef = ref(storage, `ecommerce/${Date.now()}${file.name}`)
+		const uploadTask = uploadBytesResumable(storageRef, file)
+
+		uploadTask.on(
+			'state_changed',
+			snapshot => {
+				const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+				setUploadProgress(progress)
+			},
+			error => {
+				toast.error(error.message)
+			},
+			() => {
+				getDownloadURL(uploadTask.snapshot.ref).then(downloadURL => {
+					setProduct({ ...product, imageUrl: downloadURL })
+					toast.success('Image uploaded successfully.')
+				})
+			}
+		)
+	}
+
+	const addProduct = e => {
 		e.preventDefault()
+
+		try {
+			addDoc(collection(db, 'products'), {
+				name: product.name,
+				imageUrl: product.imageUrl,
+				price: Number(product.price),
+				category: product.category,
+				brand: product.brand,
+				desc: product.desc,
+				createdAt: Timestamp.now().toDate(),
+			})
+			setUploadProgress(0)
+			setProduct({ ...initialState })
+			toast.success('Product uploaded successfully.')
+			navigate('/admin/view-products')
+		} catch (error) {
+			toast.error(error.message)
+		}
 	}
 
 	return (
@@ -53,11 +106,15 @@ function AddProducts() {
 						/>
 						<label>Product image:</label>
 						<div className={classes.group}>
-							<div className={classes.progress}>
-								<div className={classes.progressBar} style={{ width: '50%' }}>
-									Uploading 50%
+							{uploadProgress === 0 ? null : (
+								<div className={classes.progress}>
+									<div className={classes.progressBar} style={{ width: `${uploadProgress}%` }}>
+										<p className={classes.progressBarText}>
+											{uploadProgress < 100 ? `Uploading ${uploadProgress}` : `Upload Completed ${uploadProgress}%`}
+										</p>
+									</div>
 								</div>
-							</div>
+							)}
 							<input
 								type='file'
 								accept='image/*'
@@ -65,7 +122,7 @@ function AddProducts() {
 								name='image'
 								onChange={e => imageChangeHandler(e)}
 							/>
-							<input type='text' required name='imageUrl' value={product.imageUrl} disabled />
+							{product.imageUrl === '' ? null : <input type='text' name='imageUrl' value={product.imageUrl} disabled />}
 						</div>
 						<label>Product price:</label>
 						<input

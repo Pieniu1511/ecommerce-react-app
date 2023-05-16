@@ -28,6 +28,10 @@ section {
 	padding: 4rem 0;
 }
 
+header {
+	width: 100vw;
+}
+
 .container {
 	max-width: 1200px;
 	margin: 0 auto;

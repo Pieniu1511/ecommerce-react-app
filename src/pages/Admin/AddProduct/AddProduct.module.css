@@ -39,6 +39,7 @@
 }
 
 .form textarea {
+    font-size: 2rem;
     max-width: 100%;
     min-width: 100%;
     width: 100%;
@@ -64,7 +65,11 @@
 
 .progress {
     background-color: var(--color-lightGrey);
+    border-radius: 3rem;
     color: var(--color-white);
+    height: 2.7rem;
+    overflow: hidden;
+    position: relative;
     width: 100%;
 }
 
@@ -73,6 +78,10 @@
     color: var(--color-darkGrey);
     height: 100%;
     padding: 0.5rem;
+}
+
+.progressBarText {
+    position: absolute;
 }
 
 @media (max-width: 800px) {
