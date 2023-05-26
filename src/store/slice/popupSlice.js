@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-const popupState = { showLogin: false, showReset: false, showSignUp: false }
+const popupState = { showLogin: false, showReset: false, showSignUp: false, showConfirm: false }
 
 const popupSlice = createSlice({
 	name: 'login',
@@ -23,6 +23,12 @@ const popupSlice = createSlice({
 		},
 		closeSignUp(state) {
 			state.showSignUp = false
+		},
+		openConfrim(state) {
+			state.showConfirm = true
+		},
+		closeConfirm(state) {
+			state.showConfirm = false
 		},
 	},
 })

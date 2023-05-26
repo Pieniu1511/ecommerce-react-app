@@ -71,3 +71,7 @@ a {
 .permission button:hover {
 	background-color: var(--color-darkGrey);
 }
+
+.loader {
+	margin: 5rem;
+}

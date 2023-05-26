@@ -11,6 +11,7 @@ function CardLayout({ children, className }) {
 		dispatch(popupActions.closeLogin())
 		dispatch(popupActions.closeReset())
 		dispatch(popupActions.closeSignUp())
+		dispatch(popupActions.closeConfirm())
 	}
 
 	const stopPropagation = event => {

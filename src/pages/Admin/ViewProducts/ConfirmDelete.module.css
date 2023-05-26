@@ -1,0 +1,33 @@
+.title {
+    font-size: 2rem;
+}
+
+.btns {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.btns button {
+    margin: 1rem;
+    padding: 1rem 2rem;
+}
+
+.yellow {
+    background-color: var(--color-yellow);
+    transition: background-color .3s;
+}
+
+.yellow:hover {
+    background-color: var(--color-orange);
+}
+
+.grey {
+    color: var(--color-white);
+    background-color: var(--color-lightGrey);
+    transition: background-color .3s;
+}
+
+.grey:hover {
+    background-color: var(--color-darkGrey);
+}

@@ -64,7 +64,7 @@ function Login() {
 	return (
 		<CardLayout className={classes.layout}>
 			<p className={classes.title}>Login</p>
-			{isLoading && <FadeLoader color={'#febd69'} className={classes.loader} />}
+			{isLoading && <FadeLoader color={'#febd69'} className='loader' />}
 			{!isLoading && (
 				<form className={classes.form} onSubmit={loginUser}>
 					<input

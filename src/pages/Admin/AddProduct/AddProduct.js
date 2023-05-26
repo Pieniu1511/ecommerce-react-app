@@ -1,12 +1,13 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { selectEmail } from '../../../store/slice/loginSlice'
 import Permission from '../Permission'
-import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage'
+import { deleteObject, getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage'
 import { db, storage } from '../../../firebase/config'
 import { toast } from 'react-toastify'
-import { Timestamp, addDoc, collection } from 'firebase/firestore'
-import { useNavigate } from 'react-router-dom'
+import { Timestamp, addDoc, collection, doc, setDoc } from 'firebase/firestore'
+import { useNavigate, useParams } from 'react-router-dom'
+import { selectProducts } from '../../../store/slice/productsSlice'
 
 import classes from './AddProduct.module.css'
 
@@ -27,12 +28,24 @@ const initialState = {
 }
 
 function AddProducts() {
-	const [product, setProduct] = useState({
-		...initialState,
+	const { id } = useParams()
+	const products = useSelector(selectProducts)
+	const productEdit = products.find(item => item.id === id)
+
+	const [product, setProduct] = useState(() => {
+		const newState = detectForm(id, { ...initialState }, productEdit)
+		return newState
 	})
 	const [uploadProgress, setUploadProgress] = useState(0)
 
 	const navigate = useNavigate()
+
+	function detectForm(id, f1, f2) {
+		if (id === 'ADD') {
+			return f1
+		}
+		return f2
+	}
 
 	const email = useSelector(selectEmail)
 
@@ -87,14 +100,41 @@ function AddProducts() {
 		}
 	}
 
+	const editProduct = e => {
+		e.preventDefault()
+
+		if (product.imageUrl !== productEdit.imageUrl) {
+			const storageRef = ref(storage, productEdit.imageUrl)
+			deleteObject(storageRef)
+		}
+
+		try {
+			setDoc(doc(db, 'products', id), {
+				name: product.name,
+				imageUrl: product.imageUrl,
+				price: Number(product.price),
+				category: product.category,
+				brand: product.brand,
+				desc: product.desc,
+				createdAt: productEdit.createdAt,
+				editedAt: Timestamp.now().toDate(),
+			})
+
+			toast.success('Product Edited Successfully')
+			navigate('/admin/view-products')
+		} catch (error) {
+			toast.error(error.message)
+		}
+	}
+
 	return (
 		<>
 			{email !== 'admin@gmail.com' ? (
 				<Permission />
 			) : (
 				<div className={classes.products}>
-					<h2>Add New Product</h2>
-					<form className={classes.form} onSubmit={addProduct}>
+					<h2>{detectForm(id, 'Add New Product', 'Edit Product')}</h2>
+					<form className={classes.form} onSubmit={detectForm(id, addProduct, editProduct)}>
 						<label>Product name:</label>
 						<input
 							type='text'
@@ -162,7 +202,7 @@ function AddProducts() {
 							onChange={e => inputChangeHandler(e)}
 							cols='30'
 							rows='10'></textarea>
-						<button>Save Product</button>
+						<button>{detectForm(id, 'Save Product', 'Edit Product')}</button>
 					</form>
 				</div>
 			)}

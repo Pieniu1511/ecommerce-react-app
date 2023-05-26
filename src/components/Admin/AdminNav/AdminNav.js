@@ -18,7 +18,7 @@ function AdminNav() {
 					</NavLink>
 				</li>
 				<li className={classes.navLink}>
-					<NavLink to='add-product' className={({ isActive }) => (isActive ? `${classes.active}` : undefined)}>
+					<NavLink to='add-product/ADD' className={({ isActive }) => (isActive ? `${classes.active}` : undefined)}>
 						Add Products
 					</NavLink>
 				</li>

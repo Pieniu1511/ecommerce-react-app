@@ -31,7 +31,7 @@ function App() {
 					children: [
 						{ index: true, element: <AdminPage /> },
 						{ path: 'view-products', element: <ViewProducts /> },
-						{ path: 'add-product', element: <AddProduct /> },
+						{ path: 'add-product/:id', element: <AddProduct /> },
 						{ path: 'orders', element: <AdminOrders /> },
 					],
 				},
