@@ -1,6 +1,7 @@
 import React from 'react'
-import classes from './HomePage.module.css'
 import Product from '../../components/Products/Products'
+
+import classes from './HomePage.module.css'
 
 function HomePage() {
 	return (

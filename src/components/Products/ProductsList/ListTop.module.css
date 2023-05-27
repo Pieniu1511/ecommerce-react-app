@@ -1,28 +1,105 @@
 .top {
-    align-items: center;
-    background-color: var(--color-lightGrey);
-    color: var(--color-white);
-    display: flex;
-    justify-content: space-around;
-    padding: 0.5rem;
+	align-items: center;
+	background-color: var(--color-lightGrey);
+	color: var(--color-white);
+	display: flex;
+	justify-content: space-between;
+	padding: 0.5rem;
 }
 
-.icons {
-    align-items: center;
-    display: flex;
-    justify-content: center;
+.iconsLeft {
+	align-items: center;
+	display: flex;
+	justify-content: center;
 }
 
 .icons p {
-    margin: 0 1rem;
+	margin: 0 1rem;
 }
 
 .icon {
-    cursor: pointer;
-    font-size: 2.2rem;
-    margin: 0 0.5rem;
+	cursor: pointer;
+	font-size: 2.2rem;
+	margin: 0 0.5rem;
 }
 
 .active {
-    color: var(--color-yellow);
+	color: var(--color-yellow);
+}
+
+.sort label {
+	margin-right: 1rem;
+}
+
+.sort select {
+	background-color: transparent;
+	color: var(--color-white);
+	font-size: 1.6rem;
+	padding: 0.5rem;
+	width: 15rem;
+}
+
+.sort option {
+	color: var(--color-darkGrey);
+}
+
+.filter {
+	display: none;
+}
+
+@media screen and (max-width: 700px) {
+	.top {
+		align-items: start;
+		flex-direction: column;
+		padding: 1rem 0.5rem;
+	}
+
+	.icons {
+		align-items: center;
+		display: flex;
+		margin-bottom: 1rem;
+		justify-content: space-between;
+		width: 100%;
+	}
+
+	.productsCounter {
+		display: none;
+	}
+
+	.searchBar {
+		margin-bottom: 1rem;
+	}
+
+    .searchBar input {
+        width: 60%;
+    }
+
+	.sort {
+		width: 100%;
+	}
+
+	.sort p {
+		width: 20%;
+	}
+
+	.sort select {
+		width: 60%;
+	}
+
+	.filter {
+		align-items: center;
+		background-color: transparent;
+		border: 0.1rem solid var(--color-darkGrey);
+		border: none;
+		color: var(--color-white);
+		cursor: pointer;
+		display: flex;
+		font-size: 1.6rem;
+		justify-content: center;
+		padding: 0.3rem;
+	}
+
+	.filterIcon {
+		font-size: 2.2rem;
+	}
 }

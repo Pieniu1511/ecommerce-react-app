@@ -108,6 +108,7 @@
 	}
 
 	.topLeft {
+		background-color: var(--color-lightGrey);
 		height: 100%;
 		width: 100%;
 	}

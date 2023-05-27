@@ -1,0 +1,18 @@
+.search {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.icon {
+    font-size: 2.2rem;
+}
+
+.search input {
+    background-color: transparent;
+    border: 0.1rem solid var(--color-darkGrey);
+    color: var(--color-white);
+    font-size: 1.6rem;
+    margin-left: 1rem;
+    padding: 0.5rem;
+}

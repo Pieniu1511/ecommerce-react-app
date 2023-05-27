@@ -75,3 +75,9 @@ a {
 .loader {
 	margin: 5rem;
 }
+
+@media (max-width: 800px) {
+	section {
+		padding: 0;
+	}
+}

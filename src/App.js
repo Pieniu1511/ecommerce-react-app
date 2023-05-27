@@ -12,6 +12,7 @@ import AdminLayout from './layouts/AdminLayout/AdminLayout'
 import AdminOrders from './pages/Admin/AdminOrders/AdminOrders'
 import AddProduct from './pages/Admin/AddProduct/AddProduct'
 import ViewProducts from './pages/Admin/ViewProducts/ViewProducts'
+import ProductDetail from './components/Products/ProductDetail/ProductDetail'
 
 function App() {
 	const router = createBrowserRouter([
@@ -25,6 +26,7 @@ function App() {
 				{ path: 'reset', element: <ResetPage /> },
 				{ path: 'signup', element: <SignUpPage /> },
 				{ path: 'orders', element: <OrdersHistoryPage /> },
+				{ path: 'product-detail', element: <ProductDetail /> },
 				{
 					path: 'admin',
 					element: <AdminLayout />,

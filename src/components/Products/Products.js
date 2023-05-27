@@ -29,7 +29,7 @@ function Product() {
           <ProductsFilter />
         </aside>
         <div className={classes.content}>
-          <ProductsList products={products} />
+          <ProductsList products={products} isLoading={isLoading} />
         </div>
       </div>
     </section>
