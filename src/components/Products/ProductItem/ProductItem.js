@@ -15,7 +15,7 @@ function ProductItem({ product, grid, id, name, price, desc, imageUrl }) {
 
 	return (
 		<div className={grid ? `${classes.grid}` : `${classes.list}`}>
-			<Link to={'product-detail'}>
+			<Link to={`product-detail/${id}`}>
 				<div className={classes.img}>
 					<img src={imageUrl} alt={name} />
 				</div>

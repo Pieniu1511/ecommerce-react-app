@@ -1,10 +1,11 @@
 import { useState } from 'react'
 import ListTop from './ListTop'
 import ProductItem from '../ProductItem/ProductItem'
+import { FadeLoader } from 'react-spinners'
 
 import classes from './ProductsList.module.css'
 
-function ProductsList({ products }) {
+function ProductsList({ products, isLoading }) {
 	const [grid, setGrid] = useState(true)
 	const [search, setSearch] = useState('')
 
@@ -25,21 +26,25 @@ function ProductsList({ products }) {
 				search={search}
 				onSearchChange={e => setSearch(e.target.value)}
 			/>
-			<div className={grid ? `${classes.grid}` : `${classes.list}`}>
-				{products.length === 0 ? (
-					<p>No products found.</p>
-				) : (
-					<>
-						{products.map((product) => {
-							return (
-								<div key={product.id}>
-									<ProductItem {...product} grid={grid} product={product} />
-								</div>
-							)
-						})}
-					</>
-				)}
-			</div>
+			{isLoading ? (
+				<FadeLoader color={'#febd69'} className='loader' />
+			) : (
+				<div className={grid ? `${classes.grid}` : `${classes.list}`}>
+					{products.length === 0 ? (
+						<p>No products found.</p>
+					) : (
+						<>
+							{products.map(product => {
+								return (
+									<div key={product.id}>
+										<ProductItem {...product} grid={grid} product={product} />
+									</div>
+								)
+							})}
+						</>
+					)}
+				</div>
+			)}
 		</div>
 	)
 }

@@ -26,7 +26,7 @@ function App() {
 				{ path: 'reset', element: <ResetPage /> },
 				{ path: 'signup', element: <SignUpPage /> },
 				{ path: 'orders', element: <OrdersHistoryPage /> },
-				{ path: 'product-detail', element: <ProductDetail /> },
+				{ path: 'product-detail/:id', element: <ProductDetail /> },
 				{
 					path: 'admin',
 					element: <AdminLayout />,
