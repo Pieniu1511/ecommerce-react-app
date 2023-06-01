@@ -13,16 +13,6 @@
 	position: relative;
 }
 
-/* .icon {
-	display: none;
-	justify-content: center;
-	align-items: center;
-	position: absolute;
-	right: 0;
-	top: 0;
-	cursor: pointer;
-} */
-
 @media screen and (max-width: 700px) {
 	.filter {
 		display: none;

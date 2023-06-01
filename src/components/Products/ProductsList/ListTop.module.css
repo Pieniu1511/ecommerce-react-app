@@ -67,12 +67,8 @@
 	}
 
 	.searchBar {
-		margin-bottom: 1rem;
+		display: none;
 	}
-
-    .searchBar input {
-        width: 60%;
-    }
 
 	.sort {
 		width: 100%;

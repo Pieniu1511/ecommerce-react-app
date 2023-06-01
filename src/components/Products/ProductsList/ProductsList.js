@@ -5,7 +5,7 @@ import { FadeLoader } from 'react-spinners'
 
 import classes from './ProductsList.module.css'
 
-function ProductsList({ products, isLoading }) {
+function ProductsList({ products, isLoading, onShowFilter, filterIsShown }) {
 	const [grid, setGrid] = useState(true)
 	const [search, setSearch] = useState('')
 
@@ -25,6 +25,8 @@ function ProductsList({ products, isLoading }) {
 				grid={grid}
 				search={search}
 				onSearchChange={e => setSearch(e.target.value)}
+				onShowFilter={onShowFilter}
+				filterIsShown={filterIsShown}
 			/>
 			{isLoading ? (
 				<FadeLoader color={'#febd69'} className='loader' />

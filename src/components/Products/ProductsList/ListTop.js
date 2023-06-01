@@ -18,7 +18,7 @@ function ListTop(props) {
 				</div>
 				<button className={classes.filter}>
 					<FiFilter className={classes.filterIcon} />
-					<p>Product Filter</p>
+					<p onClick={props.onShowFilter}>{props.filterIsShown ? 'Close' : 'Show'} Products Filter</p>
 				</button>
 			</div>
 			<div className={classes.searchBar}>

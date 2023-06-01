@@ -1,9 +1,25 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Product from '../../components/Products/Products'
 
 import classes from './HomePage.module.css'
 
 function HomePage() {
+	const url = window.location.href
+
+	const scrollToProducts = () => {
+		if (url.includes('#products')) {
+			window.scrollTo({
+				top: 390,
+				behavior: 'smooth'
+			})
+			return 
+		}
+	}
+
+	useEffect(() => {
+		scrollToProducts()
+	})
+
 	return (
 		<>
 			<section className={classes.home}>
