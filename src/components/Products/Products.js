@@ -23,6 +23,9 @@ function Product() {
 				products: data,
 			})
 		)
+    dispatch(productsActions.getPriceRange({
+      products: data
+    }))
 	}, [dispatch, data])
 
   const showFilterMobileHandler = () => {
@@ -32,7 +35,7 @@ function Product() {
   return (
     <section>
       <div className={`${classes.productContainer} container`}>
-        {filterMobileIsShown && <ProductsFilterMobile />}
+        {filterMobileIsShown && <ProductsFilterMobile onCloseFilter={showFilterMobileHandler} />}
         <aside className={classes.filter}>
           <ProductsFilter />
         </aside>

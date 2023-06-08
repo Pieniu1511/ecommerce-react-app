@@ -55,6 +55,11 @@
     width: 100%;
 }
 
+.brand select option {
+    background-color: var(--color-lightGrey);
+    font-size: 1.4rem;
+}
+
 .filter p {
     color: var(--color-yellow);
     margin-bottom: 1rem;
@@ -71,4 +76,10 @@
     padding: 0.5rem 1rem;
     transition: background-color .3s;
     width: 100%;
+}
+
+@media (min-width: 800px) {
+    .filter {
+        display: none;
+    }
 }

@@ -1,22 +1,54 @@
-import React, { useState } from 'react'
-import { selectProducts } from '../../../store/slice/productsSlice'
-import { filterByCategory } from '../../../store/slice/filterSlice'
+import React, { useEffect, useState } from 'react'
+import { selectMaxPrice, selectMinPrice, selectProducts } from '../../../store/slice/productsSlice'
+import { filterByBrand, filterByCategory, filterByPrice } from '../../../store/slice/filterSlice'
 import { useDispatch, useSelector } from 'react-redux'
 
 import classes from './ProductsFilterMobile.module.css'
 
-function ProductsFilterMobile() {
+function ProductsFilterMobile(props) {
 	const [category, setCategory] = useState('All')
+	const [brand, setBrand] = useState('All')
+	const [maxPrice, setMaxPrice] = useState(null)
+	const [minPrice, setMinPrice] = useState(null)
 
 	const products = useSelector(selectProducts)
+	const min = useSelector(selectMinPrice)
+	const max = useSelector(selectMaxPrice)
 
 	const dispatch = useDispatch()
 
 	const allCategories = ['All', ...new Set(products.map(product => product.category))]
+	const allBrands = ['All', ...new Set(products.map(product => product.brand))]
 
 	const filterProducts = cat => {
 		setCategory(cat)
 		dispatch(filterByCategory({ products, category: cat }))
+		props.onCloseFilter()
+	}
+
+	const handleBrandChange = event => {
+		const selectedBrand = event.target.value
+		setBrand(selectedBrand)
+		dispatch(filterByBrand({ products, brand: event.target.value }))
+		props.onCloseFilter()
+	}
+	
+	useEffect(() => {
+		setMaxPrice(max)
+		setMinPrice(min)
+	}, [max, min])
+	
+	const handlePriceChange = event => {
+		const selectedPrice = parseInt(event.target.value)
+		setMaxPrice(selectedPrice)
+		dispatch(filterByPrice({ products, maxPrice }))
+	}
+
+	const clearFilter = () => {
+		setCategory('All')
+		setBrand('All')
+		setMaxPrice(max)
+		setMinPrice(min)
 	}
 
 	return (
@@ -32,21 +64,28 @@ function ProductsFilterMobile() {
 						{cat}
 					</button>
 				))}
-				{/* <button>All</button> */}
 			</div>
 			<h4>Brand</h4>
 			<div className={classes.brand}>
-				<select name='brand'>
-					<option value='all'>All</option>
+				<select name='brand' value={brand} onChange={handleBrandChange}>
+					{allBrands.map((brnd, index) => (
+						<option value={brnd} key={index}>
+							{brnd}
+						</option>
+					))}
 				</select>
 			</div>
 			<h4>Price</h4>
-			<p>$1500</p>
+			<p>
+				${minPrice} - ${maxPrice}
+			</p>
 			<div className={classes.price}>
-				<input type='range' name='price' min={100} max={1000} />
+				<input type='range' name='price' min={min} max={max} value={maxPrice || ''} onChange={handlePriceChange} />
 			</div>
 			<br />
-			<button className={classes.clearBtn}>Clear Filter</button>
+			<button className={classes.clearBtn} onClick={clearFilter}>
+				Clear Filter
+			</button>
 		</div>
 	)
 }

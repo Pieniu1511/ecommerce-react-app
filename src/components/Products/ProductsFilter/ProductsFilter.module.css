@@ -57,6 +57,10 @@
     width: 100%;
 }
 
+.brand select option {
+    background-color: var(--color-lightGrey);
+}
+
 .filter p {
     color: var(--color-yellow);
     margin-bottom: 1rem;
