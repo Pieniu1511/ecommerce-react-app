@@ -13,7 +13,7 @@ function ListTop(props) {
 					<BsFillGridFill onClick={props.onSetGrid} className={`${classes.icon} ${props.grid ? classes.active : ''}`} />
 					<FaListAlt onClick={props.onSetList} className={`${classes.icon} ${!props.grid ? classes.active : ''}`} />
 					<p className={classes.productsCounter}>
-						<b>10</b> Products found.
+						<b>{props.filteredProducts.length}</b> Products found.
 					</p>
 				</div>
 				<button className={classes.filter}>
@@ -26,7 +26,7 @@ function ListTop(props) {
 			</div>
 			<div className={classes.sort}>
 				<label>Sort by:</label>
-				<select>
+				<select value={props.sort} onChange={e => props.changeSort(e)}>
 					<option value='latest'>Latest</option>
 					<option value='lowest-price'>Lowest Price</option>
 					<option value='highest-price'>Highest Price</option>
