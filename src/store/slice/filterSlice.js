@@ -47,10 +47,20 @@ const filterSlice = createSlice({
 
             state.filteredProducts = tempProducts
         },
+        filterByCategory(state, action) {
+            const { products, category } = action.payload
+            let tempProducts = []
+            if (category === 'All') {
+                tempProducts = products
+            } else {
+                tempProducts = products.filter((product) => product.category === category)
+            }
+            state.filteredProducts = tempProducts
+        },
 	},
 })
 
-export const { filterBySearch, sortProducts } = filterSlice.actions
+export const { filterBySearch, sortProducts, filterByCategory } = filterSlice.actions
 
 export const selectFilteredProducts = state => state.filter.filteredProducts
 

@@ -13,6 +13,8 @@
 }
 
 .category {
+    display: flex;
+    flex-direction: column;
     margin-bottom: 3rem;
 }
 
@@ -23,8 +25,25 @@
     color: var(--color-white);
     cursor: pointer;
     font-size: 1.6rem;
+    margin-bottom: 2rem;
     text-align: start;
-    width: 100%;
+}
+
+.category .active {
+    color: var(--color-yellow);
+    border-bottom: 0.1rem solid var(--color-yellow);
+    position: relative;
+    padding: 0 0.7rem;
+}
+
+.category .active::before {
+    background-color: var(--color-yellow);
+    content: '';
+    height: 100%;
+    left: 0rem;
+    position: absolute;
+    width: 0.5rem;
+    top: 0;
 }
 
 .brand select {

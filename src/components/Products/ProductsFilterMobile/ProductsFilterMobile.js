@@ -1,13 +1,38 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { selectProducts } from '../../../store/slice/productsSlice'
+import { filterByCategory } from '../../../store/slice/filterSlice'
+import { useDispatch, useSelector } from 'react-redux'
 
 import classes from './ProductsFilterMobile.module.css'
 
 function ProductsFilterMobile() {
+	const [category, setCategory] = useState('All')
+
+	const products = useSelector(selectProducts)
+
+	const dispatch = useDispatch()
+
+	const allCategories = ['All', ...new Set(products.map(product => product.category))]
+
+	const filterProducts = cat => {
+		setCategory(cat)
+		dispatch(filterByCategory({ products, category: cat }))
+	}
+
 	return (
 		<div className={classes.filter}>
 			<h4>Catergories</h4>
 			<div className={classes.category}>
-				<button>All</button>
+				{allCategories.map((cat, index) => (
+					<button
+						key={index}
+						type='button'
+						className={category === cat ? classes.active : ''}
+						onClick={() => filterProducts(cat)}>
+						{cat}
+					</button>
+				))}
+				{/* <button>All</button> */}
 			</div>
 			<h4>Brand</h4>
 			<div className={classes.brand}>
