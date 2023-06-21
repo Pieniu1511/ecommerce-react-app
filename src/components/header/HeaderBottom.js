@@ -3,7 +3,7 @@ import { NavLink, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { HiMenu } from 'react-icons/hi'
 import MenuMobile from './MenuMobile'
-import Cart from './Cart'
+import CartIcon from './CartIcon'
 import Logo from '../../layouts/Logo/Logo'
 import { loginActions, selectEmail } from '../../store/slice/loginSlice'
 import { popupActions } from '../../store/slice/popupSlice'
@@ -54,7 +54,7 @@ function HeaderBottom() {
 		dispatch(popupActions.openLogin())
 	}
 
-	const cartToggleHandler = () => {
+	const menuToggleHandler = () => {
 		setMenuIsShown(!menuIsShown)
 	}
 
@@ -110,7 +110,7 @@ function HeaderBottom() {
 							</p>
 						</button>
 					)}
-					<Cart />
+						<CartIcon />
 					{!isLoggedIn && (
 						<button className={classes.login} onClick={toggleLoginHandler}>
 							<img className={classes.loginImg} src='/images/user.svg' alt='user-icon' />
@@ -129,13 +129,13 @@ function HeaderBottom() {
 					)}
 				</div>
 				<div className={classes.navMobile}>
-					<Cart />
-					<button className={classes.burgerBtn} onClick={cartToggleHandler}>
+					<CartIcon />
+					<button className={classes.burgerBtn} onClick={menuToggleHandler}>
 						<HiMenu />
 					</button>
 				</div>
 			</div>
-			{menuIsShown && <MenuMobile onCloseMenu={cartToggleHandler} />}
+			{menuIsShown && <MenuMobile onCloseMenu={menuToggleHandler} />}
 		</div>
 	)
 }

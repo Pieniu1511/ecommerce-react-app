@@ -5,6 +5,7 @@ import Login from '../auth/Login'
 import { useSelector } from 'react-redux'
 import Reset from '../auth/Reset'
 import SignUp from '../auth/SignUp'
+import Cart from '../Cart/Cart'
 
 function Header() {
 	const login = useSelector(state => state.popup.showLogin)
@@ -20,6 +21,7 @@ function Header() {
 			{login && <Login />}
 			{reset && <Reset />}
 			{signup && <SignUp />}
+
 		</>
 	)
 }

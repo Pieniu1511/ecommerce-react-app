@@ -1,0 +1,110 @@
+.table {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
+
+.table h2 {
+    margin: 3rem 0;
+}
+
+.table a {
+    color: black;
+}
+
+.table table {
+    border-spacing: 0;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.tableTop tr {
+    border-top: 0.2rem solid var(--color-yellow);
+    border-bottom: 0.2rem solid var(--color-yellow);
+}
+
+.tableTop th {
+    padding: 2rem;
+}
+
+.productName {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.productName img {
+   max-width: 10rem;
+}
+
+.tableBottom {
+    width: 100%;
+}
+
+.tableBottom tr {
+    border-bottom: 1px solid black;
+}
+
+.tableBottom td {
+    text-align: center;
+}
+
+.count {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.countBtn {
+    cursor: pointer;
+    margin: 0 0.5rem;
+    padding: 0.5rem;
+}
+
+.icon {
+    cursor: pointer;
+}
+
+.summary {
+    align-items: flex-start;
+    display: flex;
+    margin-top: 2rem;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.clearBtn {
+    background-color: var(--color-yellow);
+    cursor: pointer;
+    font-size: 1.8rem;
+    padding: 0.5rem 1rem;
+    transition: background-color .3s;
+}
+
+.clearBtn:hover, .checkoutBtn:hover {
+    background-color: var(--color-orange);
+}
+
+.card {
+    background-color: var(--color-lightGrey);
+    padding: 1rem;
+    color: var(--color-white);
+}
+
+.text {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.checkoutBtn {
+    background-color: var(--color-yellow);
+    font-size: 1.8rem;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    transition: background-color .3s;
+    width: 100%;
+}

@@ -1,0 +1,30 @@
+.pagination {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin: 1rem;
+    width: 100%;
+}
+
+.pagination li {
+    border: 1px solid var(--color-darkGrey);
+    cursor: pointer;
+    list-style: none;
+    padding: 0.7rem;
+}
+
+.pagination p {
+    margin: 0 1rem;
+}
+
+.page {
+    color: var(--color-yellow);
+}
+
+.active {
+    background-color: var(--color-yellow);
+}
+
+.hidden {
+    display: none;
+}
